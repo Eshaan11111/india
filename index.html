@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+                        body{
+                display:flex;
+                flex-direction:column;
+                align-items:center;
+            }
+            h1{
+                color:maroon;
+                text-align:center;
+                font-size:35px;
+            }
+            #pad{
+                padding:5px;
+            }
+            #back{
+                background-image:url(https://as1.ftcdn.net/v2/jpg/02/36/74/98/1000_F_236749824_xZu9r7qfp5cETVIsfzyAtAgdpe6LIhf5.jpg);
+            }
+            #pixel{
+                width:99%;
+                max-width:800px;
+                margin-bottom:20px;
+            }
+            #next{
+                background-color:lightgreen;
+                padding:5px 10px;
+                border:1px solid black;
+                cursor:pointer;
+                font-size: 16px;
+                margin:15px;
+            }
+            .thumbnail img{
+                width:100px;
+                height:100px;
+                cursor:pointer;
+                transition:transform 0.3s;
+            }
+            .thumbnails{
+                display:flex;
+                gap:20px;
+            }
+            .thumbnail img:hover{
+                transform:scale(1.3)
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div id="back">
+        <h1>DEV TOURS AND TRAVELS</h1>
+        <div id="pad">
+        <h3>ABOUT US</h3>
+        <p>Our mission is to be the leading and most trustworthy travel management company that sets the standars for professionalism, reliability and transparency to its customers.</p>
+        </div>
+        </div>
+        <img src="https://www.mapsofindia.com/ci-moi-images/my-india/nainital.jpg" id="pixel">
+        <div class="thumbnails">
+            <div class="thumbnail">
+                <img src="https://t3.ftcdn.net/jpg/02/53/61/02/360_F_253610231_wSwYFW9fPJefoSkWk7XqpA7kkh1iKzS7.jpg" data-fullsize="https://t3.ftcdn.net/jpg/02/53/61/02/360_F_253610231_wSwYFW9fPJefoSkWk7XqpA7kkh1iKzS7.jpg">
+            </div>
+            <div class="thumbnail">
+                <img src="https://www.mapsofindia.com/ci-moi-images/my-india/nainital.jpg" data-fullsize="https://www.mapsofindia.com/ci-moi-images/my-india/nainital.jpg">
+            </div>
+            <div class="thumbnail">
+                <img src="https://t0.gstatic.com/licensed-image?q=tbn:ANd9GcQCN4hNtk4Yr6mNy_oVZHF15h7Y8xl2TrRy2bfV3Vkdw4qJPaAaP4qik1Hi45d1bdU7" data-fullsize="https://t0.gstatic.com/licensed-image?q=tbn:ANd9GcQCN4hNtk4Yr6mNy_oVZHF15h7Y8xl2TrRy2bfV3Vkdw4qJPaAaP4qik1Hi45d1bdU7">
+            </div>
+        </div>
+        <button id="next">Next</button>
+        <script>
+    let thumbnails = document.querySelectorAll('.thumbnail img'); 
+    let fullsize = document.getElementById("pixel"); 
+    let currentIndex = 0;
+   
+
+    thumbnails.forEach((thumbnail, index) => {
+        thumbnail.addEventListener('click', () => {
+            const fullsizeSrc = thumbnail.getAttribute('data-fullsize'); 
+
+            fullsize.src = fullsizeSrc; 
+            currentIndex = index; 
+        });
+    });
+
+    
+    document.getElementById('next-button').addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % thumbnails.length; 
+        const nextImage = thumbnails[currentIndex].getAttribute('data-fullsize'); 
+
+        fullsize.src = nextImage; 
+    });
+</script>
+    </body>
+</html>
